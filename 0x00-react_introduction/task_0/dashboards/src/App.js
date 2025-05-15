@@ -1,23 +1,20 @@
-// task_0/dashboard/src/App.js
-import React from 'react';
+import logo from './holberton-logo.jpeg';
 import './App.css';
-import logo from './holberton-logo.jpg';
 
-function App() {
-  return (
+function App(){
+	return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="Holberton logo" />
+      <div className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <h1>School dashboard</h1>
-      </header>
+      </div>
       <div className="App-body">
         <p>Login to access the full dashboard</p>
       </div>
-      <footer className="App-footer">
-        <p>Copyright 2020 - holberton School</p>
-      </footer>
+      <div className="App-footer">
+        Copyright {getFullYear()} - {getFooterCopy()}
+      </div>
     </div>
   );
 }
-
 export default App;
