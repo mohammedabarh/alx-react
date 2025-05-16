@@ -39,6 +39,9 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "@types/react": "^18.3.21",
+    "gh-pages": "^4.0.0",
+    "postcss-selector-parser": "^6.1.2",
+    "typescript": "^5.8.3"
   }
 }
