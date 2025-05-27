@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Notifications.css";
+import { StyleSheet, css } from "aphrodite";
 import closeIcon from "../assets/close-icon.png";
 import NotificationItem from "./NotificationItem";
 import PropTypes from "prop-types";
@@ -12,6 +12,10 @@ class Notifications extends Component {
     this.markAsRead = this.markAsRead.bind(this);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.length > this.props.listNotifications.length;
+  }
+
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
   }
@@ -19,11 +23,11 @@ class Notifications extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="menuItem">
+        <div className={css(styles.menuItem)}>
           <p>Your notifications</p>
         </div>
         {this.props.displayDrawer ? (
-          <div className="Notifications">
+          <div className={css(styles.Notifications)}>
             <button
               style={{
                 color: "#3a3a3a",
@@ -57,6 +61,36 @@ class Notifications extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  Notifications: {
+    padding: "1em",
+    border: "2px dashed red",
+    position: "absolute",
+    top: "1.8em",
+    right: "0",
+
+    "@media (max-width: 375px)": {
+      display: "block",
+      height: "100vh",
+      width: "100vw",
+      marginLeft: "auto",
+      marginRight: "auto",
+      border: "none",
+      fontSize: "20px",
+      padding: "0",
+    },
+  },
+
+  "notification-header": {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+
+  menuItem: {
+    textAlign: "right",
+  },
+});
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
